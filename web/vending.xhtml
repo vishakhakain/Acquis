@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Vending</title>
+            </f:facet>
+        </h:head>
+    </f:view>
+        <body style="color: #E6E6FA">
+            <div>
+                <div id="google_translate_element"></div><script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                    }
+                </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </div>
+            <h1><center>Welcome to Vending Machine Configuration</center></h1><br/>
+            <p:panel header="CHOOSE YOUR VENDING MACHINE" toggleable="true" collapsed="true" >
+                <h:form>  
+                    <h:panelGrid columns="3">
+                        <table border="1">
+                            <thead> SELECT NUMBER OF SLOTS : </thead>
+                            <tbody>
+                                <tr>
+                                    <td><center><b> 10</b> </center></td>
+                                    <td><center><b> 20</b> </center> </td>
+                                    <td><center> <b> 30</b> </center> </td>
+                                </tr>
+                                <tr>
+                                    <td id="C1" style="width: 70px"><center><input type="radio" name="Slot Number" value="10" checked="checked"  /></center> </td>
+                                    <td id="C2" style="width: 70px"><center><input type="radio" name="Slot Number" value="20"/> </center></td>
+                                    <td id="C3" style="width: 70px"><center> <input type="radio" name="Slot Number" value="30"/></center></td>
+                                </tr>
+                            </tbody>
+                        </table>      
+                    </h:panelGrid>
+
+                </h:form>
+
+            </p:panel>
+            <p:panel header="TYPE OF VENDING MACHINE" toggleable="true" collapsed="true" >
+                <h:form>  
+                    <h:panelGrid columns="3">
+                        <table border="1">
+                            <thead> SELECT TYPE : </thead>
+                            <tbody>
+                                <tr>
+                                    <td><center><b> COFFEE </b> </center></td>
+                                    <td><center><b> BASIC </b> </center> </td>
+                                    <td><center> <b> OTHER </b> </center> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px"><center> <input type="radio" value="COFFEE" name="type_VM" checked="checked"/></center> </td>
+                                    <td style="width: 100px"><center><input type="radio" value="BASIC" name="type_VM" /> </center></td>
+                                    <td style="width: 100px"><center> <input type="radio" value="OTHER" name="type_VM" /></center></td>
+                                </tr>
+                            </tbody>
+                        </table>  
+                    </h:panelGrid>
+                </h:form>
+
+            </p:panel>
+             <p:panel header="ADD ARTICLES" toggleable="true" collapsed="true" >
+                <h:form enctype="multipart/form-data">  
+                    <h:panelGrid columns="2">
+                        Article Name<p:inputText id="item1" value="#{itemBean.name}"/>
+                       
+                        Article Description<p:inputText id="item2" value="#{itemBean.description}"/>
+                        Article Catagory<p:inputText id="item3" value="#{itemBean.category}"/>
+                        price<p:inputText id="item4" value="#{itemBean.price}"/>
+                        VAT <p:selectOneMenu id="item27" value="#{itemBean.vat}">
+                                 <f:selectItem  itemLabel="6%" itemValue="0.06"></f:selectItem>
+                                 <f:selectItem  itemLabel="12%" itemValue="0.12"></f:selectItem>
+                                 <f:selectItem  itemLabel="15%" itemValue="0.15"></f:selectItem>
+                                 <f:selectItem  itemLabel="25%" itemValue="0.25"></f:selectItem>
+                            </p:selectOneMenu> 
+                        Quantity<p:inputText id="item25" value="#{itemBean.quantity}"/>
+                                <f:facet name="footer">
+                                    <p:commandButton value="Submit" ajax="false" 
+                                                     actionListener="#{itemBean.createProd()}"/>
+                                    <p:commandButton value="Add" ajax="false" 
+                                                     actionListener="#{itemBean.createProd()}"/>
+                                    <p:commandButton value="List All" ajax="false" 
+                                                     actionListener="#{itemBean.listAll()}"/>
+                                    <p:commandButton value="Find By ID" ajax="false" 
+                                                     actionListener="#{itemBean.findProductById()}"/>
+                                     <p:commandButton value="Remove By ID" ajax="false" 
+                                                      actionListener="#{itemBean.removeProduct()}"/> 
+                                </f:facet>
+                    </h:panelGrid>
+                </h:form>
+            </p:panel>  
+        </body>
+</html>
